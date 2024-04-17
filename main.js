@@ -55,6 +55,14 @@ $.get(url+"?method=getToken", function (data, status){
                             <p>
                                 `+ message_text_out +`
                             </p>
+
+                            <p>
+                            ---
+                            </p>
+
+                            <p id="msg_id`+i+`">
+                                `+ message_id +`
+                            </p>
                         </div>
 
                         <button id="btnsend`+i+`" class="w-full mt-5 py-2.5 bg-black bg-opacity-25 shadow-2xl rounded-md items-center hover:bg-opacity-15">
@@ -74,7 +82,7 @@ $.get(url+"?method=getToken", function (data, status){
                             data = {
                                 "chat_id": chanel,
                                 "from_chat_id": id,
-                                "message_id": result[i]["message"]["message_id"]
+                                "message_id": $("#msg_id"+i)[0].innerHTML
                             }
 
                             if(acount == "активирован"){
@@ -103,18 +111,7 @@ $("#btnsend")[0].onclick = function (){
             "text": message_text
         }
 
-        Http.open("GET", bot_url+token+"/sendMessage&chat_id=6506997655")
-        Http.setRequestHeader("Content-Type", "application/json")
-        Http.send(JSON.stringify(data))
-
-        Http = new XMLHttpRequest()
-
-        data = {
-            "chat_id": "5454780283",
-            "text": message_text
-        }
-
-        Http.open("GET", bot_url+token+"/sendMessage&chat_id=5454780283")
+        Http.open("POST", bot_url+token+"/sendMessage&chat_id=5454780283")
         Http.setRequestHeader("Content-Type", "application/json")
         Http.send(JSON.stringify(data))
     
