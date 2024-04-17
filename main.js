@@ -55,48 +55,43 @@ $.get(url+"?method=getToken", function (data, status){
                             <p>
                                 `+ message_text_out +`
                             </p>
-                        </div>
 
-                        <button id="btnsend`+i+`" class="w-full mt-5 py-2.5 bg-black bg-opacity-25 shadow-2xl rounded-md items-center hover:bg-opacity-15">
-                            отправить
-                        </button>
+                            <p>
+                            ---
+                            </p>
+
+                            <p id="msg_id`+i+`">
+                                id сообщения:`+ message_id +`
+                            </p>
+                        </div>
                     `
                                         
                     $("#workspace")[0].appendChild(data_el)
                     document.write = document._write
-
-                    $("#btnsend"+i)[0].onclick = function (){
-                        $.get(url+"?method=getToken", function (data, status){
-                            token = data["ViniAPI"]
-                    
-                            if(acount == "активирован"){
-                                $.get(bot_url+token+"/forwardMessage?chat_id="+chanel+"&from_chat_id="+id+"&message_id="+message_id)
-                            }
-                        })
-                    }
                 }
             } catch (err) {}
         }
     })
 })
 
-$("#btnsend")[0].onclick = function (){
+$("#btnpiar")[0].onclick = function (){
     $.get(url+"?method=getToken", function (data, status){
         token = data["ViniAPI"]
-
-        message_text = nick + "\n---\n" + $("#text")[0].value
 
         Http = new XMLHttpRequest()
 
         data = {
-            "chat_id": "5454780283",
-            "text": message_text
+            "chat_id": chanel,
+            "from_chat_id": id,
+            "message_id": $("#msg_id")[0].value
         }
 
-        Http.open("POST", bot_url+token+"/sendMessage&chat_id=5454780283")
-        Http.setRequestHeader("Content-Type", "application/json")
-        Http.send(JSON.stringify(data))
-    
-        $("#text")[0].value = ""
+        if(acount == "активирован"){
+            Http.open("POST", bot_url+token+"/forwardMessage")
+            Http.setRequestHeader("Content-Type", "application/json")
+            Http.send(JSON.stringify(data))
+
+            $("#msg_id")[0].value = ""
+        }
     })
 }
