@@ -77,18 +77,8 @@ $.get(url+"?method=getToken", function (data, status){
                         $.get(url+"?method=getToken", function (data, status){
                             token = data["ViniAPI"]
                     
-                            Http = new XMLHttpRequest()
-                    
-                            data = {
-                                "chat_id": chanel,
-                                "from_chat_id": id,
-                                "message_id": $("#msg_id"+i)[0].innerHTML
-                            }
-
                             if(acount == "активирован"){
-                                Http.open("POST", bot_url+token+"/forwardMessage")
-                                Http.setRequestHeader("Content-Type", "application/json")
-                                Http.send(JSON.stringify(data))
+                                $.get(bot_url+token+"/forwardMessage?chat_id="+chanel+"&from_chat_id="+id+"&message_id="+$("#msg_id"+i)[0].innerHTML)
                             }
                         })
                     }
