@@ -55,14 +55,6 @@ $.get(url+"?method=getToken", function (data, status){
                             <p>
                                 `+ message_text_out +`
                             </p>
-
-                            <p>
-                            ---
-                            </p>
-
-                            <p id="msg_id`+i+`">
-                                `+ message_id +`
-                            </p>
                         </div>
 
                         <button id="btnsend`+i+`" class="w-full mt-5 py-2.5 bg-black bg-opacity-25 shadow-2xl rounded-md items-center hover:bg-opacity-15">
@@ -78,7 +70,7 @@ $.get(url+"?method=getToken", function (data, status){
                             token = data["ViniAPI"]
                     
                             if(acount == "активирован"){
-                                $.get(bot_url+token+"/forwardMessage?chat_id="+chanel+"&from_chat_id="+id+"&message_id="+$("#msg_id"+i)[0].innerHTML)
+                                $.get(bot_url+token+"/forwardMessage?chat_id="+chanel+"&from_chat_id="+id+"&message_id="+message_id)
                             }
                         })
                     }
