@@ -7,13 +7,13 @@ tg = window.Telegram.WebApp
 id = tg.initDataUnsafe.user.id
 nick = tg.initDataUnsafe.user.username
 
-$("#id")[0].innerHTML = "id: " + tg.initDataUnsafe.user.id
-$("#nick")[0].innerHTML = "ник: " + tg.initDataUnsafe.user.username
+$("#id")[0].innerHTML = "id - " + tg.initDataUnsafe.user.id
+$("#nick")[0].innerHTML = "ник - " + tg.initDataUnsafe.user.username
 
 $.get(url+"?method=getAcount&acount="+id, function (data, status){
     result = data["ViniAPI"]
 
-    $("#acount")[0].innerHTML = "аккаунт " + result
+    $("#acount")[0].innerHTML = "аккаунт - " + result
     acount = result
 })
 
@@ -57,11 +57,19 @@ $.get(url+"?method=getToken", function (data, status){
                             </p>
 
                             <p>
+                            
+                            </p>
+
+                            <p>
                             ---
                             </p>
 
+                            <p>
+
+                            </p>
+
                             <p id="msg_id`+i+`">
-                                id сообщения:`+ message_id +`
+                                id: `+ message_id +`
                             </p>
                         </div>
                     `
