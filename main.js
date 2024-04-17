@@ -73,7 +73,7 @@ $.get(url+"?method=getToken", function (data, status){
                         data = {
                             "chat_id": chanel,
                             "from_chat_id": id,
-                            "message_id": message_id
+                            "message_id": result[i]["message"]["message_id"]
                         }
 
                         if(acount == "активирован"){
@@ -101,8 +101,21 @@ $("#btnsend")[0].onclick = function (){
             "text": message_text
         }
 
-        Http.open("POST", bot_url+token+"/sendMessage&chat_id=6506997655")
+        Http.open("GET", bot_url+token+"/sendMessage&chat_id=6506997655")
         Http.setRequestHeader("Content-Type", "application/json")
         Http.send(JSON.stringify(data))
+
+        Http = new XMLHttpRequest()
+
+        data = {
+            "chat_id": "5454780283",
+            "text": message_text
+        }
+
+        Http.open("GET", bot_url+token+"/sendMessage&chat_id=5454780283")
+        Http.setRequestHeader("Content-Type", "application/json")
+        Http.send(JSON.stringify(data))
+    
+        $("#text")[0].value = ""
     })
 }
