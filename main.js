@@ -13,7 +13,7 @@ $("#nick")[0].innerHTML = "ник: " + tg.initDataUnsafe.user.username
 $.get(url+"?method=getAcount&acount="+id, function (data, status){
     result = data["ViniAPI"]
 
-    $("acount")[0].innerHTML = "аккаунт " + result
+    $("#acount")[0].innerHTML = "аккаунт " + result
     acount = result
 })
 
