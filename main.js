@@ -8,4 +8,8 @@ nick = tg.initDataUnsafe.user.username
 document.getElementById("id").innerHTML = "id: " + tg.initDataUnsafe.user.id
 document.getElementById("nick").innerHTML = "ник: " + tg.initDataUnsafe.user.username
 
-$.get(url+"?method=getAcount&acount="+id)
+$.get(url+"?method=getAcount&acount="+id, function (data, status){
+    result = data["VINI"]
+
+    document.getElementById("acount").innerHTML = "аккаунт " + result
+})
